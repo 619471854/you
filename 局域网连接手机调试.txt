@@ -1,0 +1,36 @@
+
+超级终端.apk  需要root
+
+su
+setprop service.adb.tcp.port 5555
+stop adbd
+start adbd
+
+局域网：
+	1. adb版本必须在 v1.0.25及以上才能使用此功能  在cmd中输入：adb version 查看版本
+	2. 检查能否ping 通手机（以下IP均为手机的IP）确保手机和PC处于同一网络
+	3.手机打开USB调试选项，USB线连接上手机和PC  打开CMD输入：adb devices查看设备是否连接上，确认设备已连接进行下一步操作
+	4. 设置端口 
+ 	1) 输入：adb shell  
+	2)继续输入：setprop service.adb.tcp.port 5555  
+	3)重启adbd并退出设备 输入：stop adbd 关闭adbd 输入：start adbd 启动adbd 输入：exit 退出设备 
+	4)成功以后输入：adb kill-server 关闭adb服务并拔掉USB数据线
+
+	5.保持USB调试选项为打开状态  输入：adb connect 192.168.1.157
+	6. 断开adb设备  输入：
+adb disconnect 192.168.1.157
+
+
+adb devices
+adb shell
+setprop service.adb.tcp.port 5555
+stop adbd
+start adbd
+exit
+adb kill-server 
+
+adb connect 192.168.1.
+adb disconnect 192.168.1.
+
+//改分辨率
+adb shell wm size 720x1280
